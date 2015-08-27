@@ -84,6 +84,11 @@ def straight_flush?(cards)
   flush?(cards) && straight?(cards)
 end
 
+# Rank 3
+def four_of_a_kind?(cards)
+  get_matches(cards).values == [4]
+end
+
 # Rank 5
 def flush?(cards)
   suits = []

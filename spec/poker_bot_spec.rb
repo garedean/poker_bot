@@ -33,6 +33,14 @@ describe "poker bot" do
        "5 of Diamonds"]
     end
 
+    let(:four_of_a_kind) do
+      ["8 of Diamonds",
+       "8 of Clubs",
+       "8 of Spades",
+       "8 of Diamonds",
+       "7 of Hearts"]
+    end
+
     let(:flush) do
       ["Ace of Diamonds",
        "King of Diamonds",
@@ -91,6 +99,12 @@ describe "poker bot" do
   describe "#straight_flush?" do
     it "returns true if straight flush" do
       expect(straight_flush?(parse_cards(straight_flush))).to eq(true)
+    end
+  end
+
+  describe "#four_of_a_kind?" do
+    it "returns true if four of a kind" do
+      expect(four_of_a_kind?(parse_cards(four_of_a_kind))).to eq(true)
     end
   end
 

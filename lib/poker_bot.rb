@@ -39,3 +39,49 @@ def parse_card(card_string)
 
   { value: card_values[card[0]], suit: card[1].to_sym }
 end
+
+# CARD HELPERS
+# =============================================================
+
+def get_high_card(cards)
+  card_values(cards).max
+end
+
+def card_values(cards)
+  values = []
+
+  cards.each do |card|
+   values << card[:value]
+  end
+  values
+end
+
+# HAND CHECKERS
+# =============================================================
+
+def royal_flush?(cards)
+  flush?(cards) && straight?(cards) && get_high_card(cards) == 14
+end
+
+def flush?(cards)
+  suits = []
+
+  cards.each do |card|
+    suits << card[:suit]
+  end
+
+  suits.uniq.length == 1
+end
+
+def straight?(cards)
+  values = card_values(cards).sort
+
+  values.each_with_index do |element, index|
+    break if index == (values.length - 1)
+
+    next_element = values[index + 1]
+    return false unless next_element - element == 1
+  end
+
+  true
+end

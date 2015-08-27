@@ -17,6 +17,39 @@ describe "poker bot" do
        {value: 10, suit: :diamonds}]
     end
 
+    let(:royal_flush) do
+      ["Ace of Diamonds",
+       "King of Diamonds",
+       "Queen of Diamonds",
+       "Jack of Diamonds",
+       "10 of Diamonds"]
+    end
+
+    let(:flush) do
+      ["Ace of Diamonds",
+       "King of Diamonds",
+       "Queen of Diamonds",
+       "Jack of Diamonds",
+       "10 of Diamonds"]
+    end
+
+    let(:straight) do
+      ["Ace of Diamonds",
+       "King of Diamonds",
+       "Queen of Diamonds",
+       "Jack of Diamonds",
+       "10 of Clubs"]
+    end
+
+    let(:high_card) do
+      ["King of Diamonds",
+       "8 of Clubs",
+       "6 of Hearts",
+       "Jack of Spades",
+       "10 of Clubs"]
+    end
+
+
   # Helper method tests
   # =========================================
 
@@ -29,6 +62,33 @@ describe "poker bot" do
   describe "#parse_cards" do
     it "returns an array of hashes representing cards" do
       expect(parse_cards(cards_as_string_array)).to eq(cards_as_hash_array)
+    end
+  end
+
+  describe "#high_card" do
+    it "return the highest card" do
+      expect(get_high_card(parse_cards(high_card))).to eq(13)
+    end
+  end
+
+  # Hand method tests
+  # =========================================
+
+  describe "#royal_flush?" do
+    it "returns true if royal flush" do
+      expect(royal_flush?(parse_cards(royal_flush))).to eq(true)
+    end
+  end
+
+  describe "#flush?" do
+    it "returns true if flush" do
+      expect(flush?(parse_cards(flush))).to eq(true)
+    end
+  end
+
+  describe "#straight?" do
+    it "returns true if straight" do
+      expect(straight?(parse_cards(straight))).to eq(true)
     end
   end
 end

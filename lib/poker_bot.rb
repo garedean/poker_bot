@@ -3,6 +3,28 @@ require 'pry'
 # string array as argument
 def get_best_hand(cards)
   cards = parse_cards(cards)
+
+  if royal_flush?(cards)
+    return "Royal Flush"
+  elsif straight_flush?(cards)
+    return "Straight Flush"
+  elsif four_of_a_kind?(cards)
+    return "Four of a Kind"
+  elsif full_house?(cards)
+    return "Full House"
+  elsif flush?(cards)
+    return "Flush"
+  elsif straight?(cards)
+    return "Straight"
+  elsif three_of_a_kind?(cards)
+    return "Three of a Kind"
+  elsif two_pair?(cards)
+    return "Two Pair"
+  elsif pair?(cards)
+    return "Pair"
+  else
+    "High Card"
+  end
 end
 
 # CARD PARSING

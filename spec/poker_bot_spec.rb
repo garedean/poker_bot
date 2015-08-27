@@ -54,7 +54,7 @@ describe "poker bot" do
        "King of Diamonds",
        "Queen of Diamonds",
        "Jack of Diamonds",
-       "10 of Diamonds"]
+       "6 of Diamonds"]
     end
 
     let(:straight) do
@@ -176,5 +176,50 @@ describe "poker bot" do
     end
   end
 
-  # high_card is the lowest hand. Test listed under hekper method tests
+  # high_card is the lowest hand. Test listed under helper method tests
+
+  # Peace of mind tests
+  # =========================================
+
+  describe "various real worlds tests" do
+    it "returns 'Royal Flush'" do
+      expect(get_best_hand(royal_flush)).to eq('Royal Flush')
+    end
+
+    it "returns 'Straight Flush'" do
+      expect(get_best_hand(straight_flush)).to eq('Straight Flush')
+    end
+
+    it "returns 'Four of a Kind'" do
+      expect(get_best_hand(four_of_a_kind)).to eq('Four of a Kind')
+    end
+
+    it "returns 'Full House'" do
+      expect(get_best_hand(full_house)).to eq('Full House')
+    end
+
+    it "returns 'Flush'" do
+      expect(get_best_hand(flush)).to eq('Flush')
+    end
+
+    it "returns 'Straight'" do
+      expect(get_best_hand(straight)).to eq('Straight')
+    end
+
+    it "returns 'Three of a Kind'" do
+      expect(get_best_hand(three_of_a_kind)).to eq('Three of a Kind')
+    end
+
+    it "returns 'Two Pair'" do
+      expect(get_best_hand(two_pair)).to eq('Two Pair')
+    end
+
+    it "returns 'Pair'" do
+      expect(get_best_hand(pair)).to eq('Pair')
+    end
+
+    it "returns 'High Card'" do
+      expect(get_best_hand(high_card)).to eq('High Card')
+    end
+  end
 end

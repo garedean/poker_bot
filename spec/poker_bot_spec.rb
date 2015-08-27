@@ -25,6 +25,14 @@ describe "poker bot" do
        "10 of Diamonds"]
     end
 
+    let(:straight_flush) do
+      ["3 of Diamonds",
+       "6 of Diamonds",
+       "2 of Diamonds",
+       "4 of Diamonds",
+       "5 of Diamonds"]
+    end
+
     let(:flush) do
       ["Ace of Diamonds",
        "King of Diamonds",
@@ -80,6 +88,12 @@ describe "poker bot" do
     end
   end
 
+  describe "#straight_flush?" do
+    it "returns true if straight flush" do
+      expect(straight_flush?(parse_cards(straight_flush))).to eq(true)
+    end
+  end
+
   describe "#flush?" do
     it "returns true if flush" do
       expect(flush?(parse_cards(flush))).to eq(true)
@@ -91,4 +105,5 @@ describe "poker bot" do
       expect(straight?(parse_cards(straight))).to eq(true)
     end
   end
+
 end

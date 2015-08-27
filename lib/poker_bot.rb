@@ -43,6 +43,21 @@ end
 # CARD HELPERS
 # =============================================================
 
+# returns hash of card values and repeat counts. Cards without repeats are ignored
+# [ 2, 3, 3, 2, 3] => { 2=>2, 3=>3 }
+def get_matches(cards)
+  values = card_values(cards)
+  output = Hash.new(0)
+
+  values.each do |v|
+    output.store(v, output[v] + 1)
+  end
+
+  output.select do |k, v|
+    v > 1
+  end
+end
+
 def get_high_card(cards)
   card_values(cards).max
 end
@@ -59,10 +74,17 @@ end
 # HAND CHECKERS
 # =============================================================
 
+# Rank 1
 def royal_flush?(cards)
   flush?(cards) && straight?(cards) && get_high_card(cards) == 14
 end
 
+# Rank 2
+def straight_flush?(cards)
+  flush?(cards) && straight?(cards)
+end
+
+# Rank 5
 def flush?(cards)
   suits = []
 
@@ -73,6 +95,7 @@ def flush?(cards)
   suits.uniq.length == 1
 end
 
+# Rank 6
 def straight?(cards)
   values = card_values(cards).sort
 

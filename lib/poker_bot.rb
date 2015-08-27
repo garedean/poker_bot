@@ -89,6 +89,11 @@ def four_of_a_kind?(cards)
   get_matches(cards).values == [4]
 end
 
+# Rank 4
+def full_house?(cards)
+  return true if get_matches(cards).values.sort == [2, 3]
+end
+
 # Rank 5
 def flush?(cards)
   suits = []

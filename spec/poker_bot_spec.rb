@@ -41,6 +41,14 @@ describe "poker bot" do
        "7 of Hearts"]
     end
 
+    let(:full_house) do
+      ["8 of Diamonds",
+       "9 of Diamonds",
+       "9 of Diamonds",
+       "8 of Diamonds",
+       "8 of Diamonds"]
+    end
+
     let(:flush) do
       ["Ace of Diamonds",
        "King of Diamonds",
@@ -105,6 +113,12 @@ describe "poker bot" do
   describe "#four_of_a_kind?" do
     it "returns true if four of a kind" do
       expect(four_of_a_kind?(parse_cards(four_of_a_kind))).to eq(true)
+    end
+  end
+
+  describe "#full_house?" do
+    it "returns true if full house" do
+      expect(full_house?(parse_cards(full_house))).to eq(true)
     end
   end
 

@@ -65,6 +65,30 @@ describe "poker bot" do
        "10 of Clubs"]
     end
 
+    let(:three_of_a_kind) do
+      ["8 of Diamonds",
+       "8 of Clubs",
+       "8 of Spades",
+       "2 of Diamonds",
+       "3 of Hearts"]
+    end
+
+    let(:two_pair) do
+      ["8 of Diamonds",
+       "8 of Clubs",
+       "9 of Spades",
+       "9 of Diamonds",
+       "10 of Hearts"]
+    end
+
+    let(:pair) do
+      ["8 of Diamonds",
+       "8 of Clubs",
+       "9 of Spades",
+       "10 of Diamonds",
+       "Jack of Hearts"]
+    end
+
     let(:high_card) do
       ["King of Diamonds",
        "8 of Clubs",
@@ -134,4 +158,23 @@ describe "poker bot" do
     end
   end
 
+  describe "#three_of_a_kind?" do
+    it "returns true if three of a kind" do
+      expect(three_of_a_kind?(parse_cards(three_of_a_kind))).to eq(true)
+    end
+  end
+
+  describe "#two_pair" do
+    it "returns true if two pair" do
+      expect(two_pair?(parse_cards(two_pair))).to eq(true)
+    end
+  end
+
+  describe "#pair" do
+    it "returns true if pair" do
+      expect(pair?(parse_cards(pair))).to eq(true)
+    end
+  end
+
+  # high_card is the lowest hand. Test listed under hekper method tests
 end

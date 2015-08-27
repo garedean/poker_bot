@@ -118,3 +118,18 @@ def straight?(cards)
 
   true
 end
+
+# Rank 7
+def three_of_a_kind?(cards)
+  get_matches(cards).values.include?(3)
+end
+
+# Rank 8
+def two_pair?(cards)
+  get_matches(cards).values.size == 2
+end
+
+# Rank 9
+def pair?(cards)
+  get_matches(cards).values == [2]
+end

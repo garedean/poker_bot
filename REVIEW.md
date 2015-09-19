@@ -1,7 +1,31 @@
-## Algorithmic/Logic Test
-# =====================================================================
+# PokerBot
+# ==================================================
 
-Task: this assignment calculates the best poker hand from five cards.
+About:
+-----------------------------------------------------------------------
+This script calculates the best poker hand from an array of five cards (as strings).
+
+Example:
+
+cards =
+  ["Ace of Diamonds",
+   "King of Diamonds",
+   "Queen of Diamonds",
+   "Jack of Diamonds",
+   "10 of Diamonds"]
+
+get_best_hand(cards) --> "Royal Flush"
+
+
+Setup:
+-----------------------------------------------------------------------
+User input is currently not supported. To run tests:
+
+In the terminal:
+1. Navigate to the root of the PokerBot directory
+2. Run 'bundle install'
+3. Run 'rspec'
+
 
 Review:
 -----------------------------------------------------------------------
